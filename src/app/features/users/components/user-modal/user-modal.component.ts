@@ -29,7 +29,7 @@ export class UserModalComponent implements OnChanges {
   editMode: boolean = false;
 
   productForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    username: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$')]),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
