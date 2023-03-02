@@ -5,6 +5,7 @@ import {API} from "../../../core/util";
 import {HttpClient} from "@angular/common/http";
 import {ProductModel} from "../../../core/models/product.model";
 import {AuthStore} from "../../../core/store/auth.store";
+import {ProductFilterModel} from "../model/product-filter.model";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class ProductService {
 
   constructor(private http: HttpClient, private authStore: AuthStore) { }
 
-  getProducts(search: any = null): Observable<PayloadModel<ProductModel[]>> {
-    return this.http.get<PayloadModel<ProductModel[]>>(`${API}products/100`, {params: {search}}).pipe(
+  getProducts(filter: ProductFilterModel): Observable<PayloadModel<ProductModel[]>> {
+    return this.http.get<PayloadModel<ProductModel[]>>(`${API}products/${filter.limit}/${filter.page}`, {params: {...filter}}).pipe(
       shareReplay()
     )
   }

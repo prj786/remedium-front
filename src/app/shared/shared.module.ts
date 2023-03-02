@@ -10,6 +10,7 @@ import {RippleModule} from "primeng/ripple";
 import {ConfirmPopupModule} from "primeng/confirmpopup";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {NotifyService} from "./services/notify.service";
+import {TooltipModule} from "primeng/tooltip";
 
 
 
@@ -20,16 +21,17 @@ import {NotifyService} from "./services/notify.service";
   exports: [
     TableComponent,
   ],
-  imports: [
-    CommonModule,
-    TableModule,
-    TranslateModule,
-    PaginatorModule,
-    InputTextModule,
-    ButtonModule,
-    RippleModule,
-    ConfirmPopupModule,
-  ],
+    imports: [
+        CommonModule,
+        TableModule,
+        TranslateModule,
+        PaginatorModule,
+        InputTextModule,
+        ButtonModule,
+        RippleModule,
+        ConfirmPopupModule,
+        TooltipModule,
+    ],
   providers: [
     ConfirmationService,
     MessageService,

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {UserModel} from "../../../core/models/user.model";
 import {ProductModel} from "../../../core/models/product.model";
-import {PaginatorModel} from "../../models/paginator.model";
 import {ConfirmationService} from "primeng/api";
 import {TranslateService} from "@ngx-translate/core";
 import {AuthStore} from "../../../core/store/auth.store";
@@ -52,16 +51,13 @@ export class TableComponent {
   totalRecords: number = 0;
 
   @Input()
-  isProduct: boolean = false;
+  rows: number = 10;
 
   @Input()
-  paginationOptions: PaginatorModel = {
-    rows: 10,
-    rowsPerPageOptions: [10, 20, 50]
-  }
+  isProduct: boolean = false;
 
   @Output()
-  rowChange = new EventEmitter<number>();
+  pageChanged = new EventEmitter<any>();
 
   @Output()
   sale = new EventEmitter<ProductModel | UserModel>();

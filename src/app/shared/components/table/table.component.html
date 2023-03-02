@@ -1,18 +1,11 @@
 <p-table
-         [paginator]="pagination"
          [lazy]="true"
          [loading]="loading"
-         [rowsPerPageOptions]="[10,25,50]"
-         [totalRecords]="totalRecords"
-         [rows]="paginationOptions.rows"
          [value]="tableData"
          [columns]="tableHeaders"
-         (rowsChange)="rowChange.emit($event)"
          [scrollable]="true"
          scrollHeight="70vh"
          styleClass="p-datatable-gridlines"
-         [showCurrentPageReport]="true"
-         [currentPageReportTemplate]="'table.info' | translate: {first: '{first}', last: '{last}', totalRecords: '{totalRecords}'}"
 >
   <ng-template pTemplate="caption" *ngIf="caption">
     <div class="flex w-full justify-between items-center">
@@ -21,7 +14,7 @@
           {{('general.' + caption) | translate}}
         </p>
         <button *ngIf="filterEnabled" pButton icon="pi pi-filter" class="p-button-rounded p-button-success mr-2" (click)="filter.emit()"></button>
-        <button *ngIf="filterEnabled" pButton icon="pi pi-filter-slash" class="p-button-rounded p-button-danger mr-2" (click)="filterClear.emit()"></button>
+        <button *ngIf="filterEnabled" [pTooltip]="'modal.clear-filter' | translate" pButton icon="pi pi-filter-slash" class="p-button-rounded p-button-danger mr-2" (click)="filterClear.emit()"></button>
       </div>
       <div class="flex gap-2.5">
         <span class="p-input-icon-left ml-auto">
@@ -63,4 +56,13 @@
     </tr>
   </ng-template>
 </p-table>
+<p-paginator
+  *ngIf="pagination"
+  [rowsPerPageOptions]="[10,25,50]"
+  [totalRecords]="totalRecords"
+  [rows]="rows"
+  [showCurrentPageReport]="true"
+  [currentPageReportTemplate]="'table.info' | translate: {first: '{first}', last: '{last}', totalRecords: '{totalRecords}'}"
+  (onPageChange)="pageChanged.emit($event)"
+></p-paginator>
 <p-confirmPopup></p-confirmPopup>

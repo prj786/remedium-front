@@ -4,7 +4,9 @@ import {Observable, shareReplay} from "rxjs";
 import {PayloadModel} from "../../../core/models/payload.model";
 import {UserModel} from "../../../core/models/user.model";
 import {API} from "../../../core/util";
-import {FilterModel} from "../../../shared/models/filter.model";
+import {UserFilterModel} from "../model/user-filter.model";
+import {ProductFilterModel} from "../../products/model/product-filter.model";
+import {ProductModel} from "../../../core/models/product.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(filter: FilterModel): Observable<PayloadModel<UserModel[]>> {
+  getUsers(filter: UserFilterModel): Observable<PayloadModel<UserModel[]>> {
     const query = {
       search: filter.search ? filter.search : '',
       registerDateFrom: filter?.registerDateFrom ? filter?.registerDateFrom : '',
@@ -24,9 +26,7 @@ export class UserService {
     }
 
     // @ts-ignore
-    const queryParams = new HttpParams({ fromObject: query });
-
-    return this.http.get<PayloadModel<UserModel[]>>(`${API}users/list/${filter.limit}/${filter.page}`, {params: queryParams}).pipe(
+    return this.http.get<PayloadModel<UserModel[]>>(`${API}users/list/${filter.limit}/${filter.page}`, {params: {...query}}).pipe(
       shareReplay()
     )
   }

@@ -28,7 +28,7 @@ export class ProductModalComponent implements OnChanges {
 
   productForm: FormGroup = new FormGroup({
     _id: new FormControl(''),
-    productName: new FormControl('', [Validators.required]),
+    productName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]+$|^[ა-ჰ]+')]),
     price: new FormControl('', [Validators.required, Validators.min(1)]),
     quantity: new FormControl('', [Validators.required, Validators.min(1)])
   });

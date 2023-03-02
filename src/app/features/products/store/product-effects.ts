@@ -10,7 +10,7 @@ export class ProductEffects {
     this.actions$.pipe(
       ofType(ProductActions.getProducts),
       mergeMap((action) => {
-        return this.productService.getProducts(action.search)
+        return this.productService.getProducts(action)
           .pipe(
             map((productsPayload) => ProductActions.getProductsSuccess(productsPayload)),
           );

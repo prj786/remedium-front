@@ -28,6 +28,7 @@
     "info": "ნაჩვენებია {first} - {last} სულ {totalRecords} ჩანაწერი"
   },
   "modal": {
+    "clear-filter": "ფილტრის გასუფთავება",
     "sell-product": "პროდუქტის გაყიდვა",
     "count": "რაოდენობა",
     "filter": "ფილტრაცია",

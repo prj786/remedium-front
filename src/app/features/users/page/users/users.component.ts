@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserModel} from "../../../../core/models/user.model";
-import {FilterModel} from "../../../../shared/models/filter.model";
+import {UserFilterModel} from "../../model/user-filter.model";
 import {select, Store} from "@ngrx/store";
 import * as UserActions from '../../store/user-actions';
 import {AppStateModel} from "../../../../shared/models/appstate.model";
@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit {
     saleIncome: 0
   };
 
-  filter: FilterModel = {
+  filter: UserFilterModel = {
     search: '',
     registerDateFrom: null,
     registerDateTo: null,
@@ -71,10 +71,6 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  addUser() {
-    this.showModal = true;
-  }
-
   createUser(user: UserModel) {
     this.store.dispatch(UserActions.createUser(user));
     this.showModal = false;
@@ -90,7 +86,7 @@ export class UsersComponent implements OnInit {
     this.store.dispatch(UserActions.getUsers(this.filter));
   }
 
-  filtered(ev: FilterModel): void {
+  filtered(ev: Partial<UserFilterModel>): void {
     this.filter = {
       ...this.filter,
       ...ev
@@ -98,9 +94,23 @@ export class UsersComponent implements OnInit {
     this.store.dispatch(UserActions.getUsers(this.filter));
   }
 
-  rowChange(size: number): void {
-    console.log(size);
-    this.filter.page = size;
+  rowChange(page: any): void {
+    this.filter.page = page.page + 1;
+    this.filter.limit = page.rows;
+    this.store.dispatch(UserActions.getUsers(this.filter));
+  }
+
+  clearFilter(): void {
+    this.filter = {
+      search: '',
+      registerDateFrom: null,
+      registerDateTo: null,
+      totalSaleFrom: null,
+      totalSaleTo: null,
+      page: 1,
+      limit: 10,
+    }
+
     this.store.dispatch(UserActions.getUsers(this.filter));
   }
 

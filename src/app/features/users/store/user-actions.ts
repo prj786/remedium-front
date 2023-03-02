@@ -1,9 +1,9 @@
 import {createAction, props} from "@ngrx/store";
 import {PayloadModel} from "../../../core/models/payload.model";
 import {UserModel} from "../../../core/models/user.model";
-import {FilterModel} from "../../../shared/models/filter.model";
+import {UserFilterModel} from "../model/user-filter.model";
 
-export const getUsers = createAction('[Users] Get Users', props<FilterModel>());
+export const getUsers = createAction('[Users] Get Users', props<UserFilterModel>());
 export const getUsersSuccess = createAction('[Users] Get Users success', props<PayloadModel<UserModel[]>>());
 
 // User Creation

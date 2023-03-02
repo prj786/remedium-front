@@ -1,9 +1,10 @@
 import {createAction, props} from "@ngrx/store";
 import {PayloadModel} from "../../../core/models/payload.model";
 import {ProductModel} from "../../../core/models/product.model";
+import {ProductFilterModel} from "../model/product-filter.model";
 
 // Products Get
-export const getProducts= createAction('[Products] Get Products', props<{search: string}>());
+export const getProducts= createAction('[Products] Get Products', props<ProductFilterModel>());
 export const getProductsSuccess = createAction('[Products] Get Products success', props<PayloadModel<ProductModel[]>>());
 
 // Product Removal

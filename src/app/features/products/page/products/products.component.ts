@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductModel} from "../../../../core/models/product.model";
-import {Observable} from "rxjs";
+import {filter, Observable} from "rxjs";
 import {PayloadModel} from "../../../../core/models/payload.model";
 import {select, Store} from "@ngrx/store";
 import {AppStateModel} from "../../../../shared/models/appstate.model";
@@ -9,6 +9,7 @@ import * as ProductActions from '../../store/product-actions';
 import {getAllProductsSuccess} from "../../store/product-selectors";
 import {getProducts} from "../../store/product-actions";
 import {NotifyService} from "../../../../shared/services/notify.service";
+import {ProductFilterModel} from "../../model/product-filter.model";
 
 @Component({
   selector: 'rm-products',
@@ -20,7 +21,13 @@ export class ProductsComponent implements OnInit {
     'productName',
     'price',
     'quantity',
-  ]
+  ];
+
+  productFilter: ProductFilterModel = {
+    search: '',
+    page: 1,
+    limit: 10
+  }
 
   selectedProduct!: ProductModel;
   sellProduct!: ProductModel;
@@ -34,7 +41,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(ProductActions.getProducts({search: ''}));
+    this.store.dispatch(ProductActions.getProducts(this.productFilter));
   }
 
   editProduct(product: ProductModel) {
@@ -76,7 +83,15 @@ export class ProductsComponent implements OnInit {
   }
 
   search(ev: any): void {
-    this.store.dispatch(ProductActions.getProducts({search: ev}));
+    this.productFilter.search = ev;
+    this.store.dispatch(ProductActions.getProducts(this.productFilter));
+  }
+
+  pageChanged(ev: any): void {
+    this.productFilter.page = ev.page + 1;
+    this.productFilter.limit = ev.rows;
+
+    this.store.dispatch(ProductActions.getProducts(this.productFilter));
   }
 
 }

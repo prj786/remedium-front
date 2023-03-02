@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {FilterModel} from "../../../../shared/models/filter.model";
+import {UserFilterModel} from "../../model/user-filter.model";
 
 @Component({
   selector: 'rm-filter-modal',
@@ -14,7 +14,7 @@ export class FilterModalComponent {
   visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Output()
-  filteredData: EventEmitter<FilterModel> = new EventEmitter<FilterModel>();
+  filteredData: EventEmitter<Partial<UserFilterModel>> = new EventEmitter<Partial<UserFilterModel>>();
 
   filterForm: FormGroup = new FormGroup({
     registerDateFrom: new FormControl(''),
@@ -36,12 +36,6 @@ export class FilterModalComponent {
 
   clearFilter(): void {
     this.filterForm.reset();
-    this.filteredData.emit({
-      registerDateFrom: null,
-      registerDateTo: null,
-      totalSaleFrom: null,
-      totalSaleTo: null
-    })
   }
 
 }

@@ -1,17 +1,19 @@
 <ng-container *ngIf="(userTableData$ | async) as userData">
   <rm-table
     [pagination]="true"
+    [rows]="filter.limit"
     [tableData]="userData.items"
     [tableHeaders]="userTableHeader"
     [totalRecords]="userData.size"
     [caption]="'users'"
     [actionsRow]="(isAuthenticated$ | async)"
     [filterEnabled]="true"
-    (rowChange)="rowChange($event)"
+    (pageChanged)="rowChange($event)"
     (edit)="editUser($event)"
     (delete)="deleteData($event)"
-    (add)="addUser()"
+    (add)="showModal = true"
     (filter)="showFilter = true"
+    (filterClear)="clearFilter()"
     (searched)="searchFor($event)"
   ></rm-table>
 </ng-container>
