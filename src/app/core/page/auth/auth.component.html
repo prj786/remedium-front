@@ -1,0 +1,14 @@
+<form [formGroup]="authForm" #f="ngForm" (ngSubmit)="login(f)" class="flex justify-center w-full items-center flex-col">
+  <div class="max-w-xl flex flex-col gap-3.5">
+    <h2>{{'form.authentication' | translate}}</h2>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <input formControlName="username" type="text" pInputText [placeholder]="'general.username' | translate">
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+      <input formControlName="password" type="password" pInputText [placeholder]="'general.password' | translate">
+    </div>
+    <button pButton type="submit" [label]="'form.login-in' | translate" icon="pi pi-check" iconPos="left"></button>
+  </div>
+</form>

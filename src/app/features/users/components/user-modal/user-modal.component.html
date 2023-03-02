@@ -1,0 +1,41 @@
+<p-dialog [(visible)]="visible" (onHide)="visibleChange.emit(false)">
+  <ng-template pTemplate="header">
+    {{'modal.' + (editMode ? 'edit' : 'add') + '-user' | translate}}
+  </ng-template>
+
+  <form [formGroup]="productForm" class="flex flex-col gap-3 form">
+    <div class="form__row">
+      <div class="form__field">
+        <label for="user.username">{{'user.username' | translate}}</label>
+        <input type="text" id="user.username" formControlName="username" pInputText [placeholder]="'user.username' | translate">
+      </div>
+      <div class="form__field">
+        <label for="user.password">{{'user.password' | translate}}</label>
+        <input type="password" id="user.password" formControlName="password" pInputText [placeholder]="'user.password' | translate">
+      </div>
+    </div>
+    <div class="form__row">
+      <div class="form__field">
+        <label for="user-firstName">{{'user.firstName' | translate}}</label>
+        <input type="text" pInputText id="user-firstName" formControlName="firstName" [placeholder]="'user.firstName' | translate">
+      </div>
+      <div class="form__field">
+        <label for="user-lastName">{{'user.lastName' | translate}}</label>
+        <input type="text" pInputText id="user-lastName" formControlName="lastName" [placeholder]="'user.lastName' | translate">
+      </div>
+    </div>
+    <div class="form__field">
+      <label for="user-saleIncome">{{'user.saleIncome' | translate}}</label>
+      <input [readOnly]="editMode" type="text" pInputText id="user-saleIncome" formControlName="saleIncome" [placeholder]="'user.saleIncome' | translate">
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <button pButton type="button" [disabled]="productForm.invalid"  [label]="'modal.confirm' | translate" icon="pi pi-check" iconPos="left" class="p-button-success p-button-sm"
+            (click)="accept()"
+    ></button>
+    <button pButton type="button" [label]="'modal.cancel' | translate" icon="pi pi-times" iconPos="left" class="p-button-danger p-button-sm"
+            (click)="visible = false; editMode = false"
+    ></button>
+  </ng-template>
+</p-dialog>

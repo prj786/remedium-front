@@ -1,0 +1,40 @@
+<p-dialog [(visible)]="visible" (onHide)="visibleChange.emit(false)" [contentStyle]="{'overflow': 'visible'}">
+  <ng-template pTemplate="header">
+    {{'modal.filter' | translate}}
+  </ng-template>
+
+  <form [formGroup]="filterForm" class="flex flex-col gap-3 form">
+    <div class="form__row">
+      <div class="form__field">
+        <label for="modal.totalSaleFrom">{{'modal.totalSaleFrom' | translate}}</label>
+        <p-inputNumber id="modal.totalSaleFrom" formControlName="totalSaleFrom" [placeholder]="'modal.totalSaleFrom' | translate"></p-inputNumber>
+      </div>
+      <div class="form__field">
+        <label for="modal.totalSaleTo">{{'modal.totalSaleTo' | translate}}</label>
+        <p-inputNumber id="modal.totalSaleTo" formControlName="totalSaleTo" [placeholder]="'modal.totalSaleTo' | translate"></p-inputNumber>
+      </div>
+    </div>
+    <div class="form__row">
+      <div class="form__field">
+        <label for="modal.registerFrom">{{'modal.registerFrom' | translate}}</label>
+        <p-calendar id="modal.registerFrom" formControlName="registerDateFrom" [placeholder]="'modal.registerFrom' | translate" inputId="basic" [maxDate]="today"></p-calendar>
+      </div>
+      <div class="form__field">
+        <label for="modal.registerDateTo">{{'modal.registerDateTo' | translate}}</label>
+        <p-calendar appendTo="body" id="modal.registerDateTo" formControlName="registerDateTo" [placeholder]="'modal.registerDateTo' | translate" inputId="basic" [maxDate]="today"></p-calendar>
+      </div>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <button pButton type="button"  [label]="'modal.clear-filter' | translate" icon="pi pi-filter" iconPos="left" class="p-button-warning p-button-sm"
+            (click)="clearFilter()"
+    ></button>
+    <button pButton type="button"  [label]="'modal.confirm' | translate" icon="pi pi-check" iconPos="left" class="p-button-success p-button-sm"
+            (click)="onAccept()"
+    ></button>
+    <button pButton type="button" [label]="'modal.cancel' | translate" icon="pi pi-times" iconPos="left" class="p-button-danger p-button-sm"
+            (click)="visible = false"
+    ></button>
+  </ng-template>
+</p-dialog>

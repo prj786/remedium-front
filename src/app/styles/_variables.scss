@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&family=Ubuntu:wght@300;500&display=swap');
+
+// colors
+$main-dark-color: #121212;
+$main-light-color: #ffe5e5;
+
+$sec-dark-color: #071426;
+$sec-light-color: #ffd1bf;
+
+$white-color: #f2f2f2;
+$black-color: #020202;
+
+// sizes
+$heading-size-lg: 2.5em;
+$heading-size-md: 2.2em;
+$heading-size-sm: 2em;
+
+$p-size-lg: 1.8em;
+$p-size-md: 1.2em;
+$p-size-sm: .9em;
+
+$i-size-lg: 1.5em;
+$i-size-md: 1.3em;
+$i-size-sm: .8em;
+
+// fonts
+$main-font: 'Roboto', sans-serif;
+$sec-font: 'Ubuntu', sans-serif;
+
+@mixin prm-txt-light($size, $weight) {
+  font-family: $main-font;
+  color: $white-color;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin prm-txt-dark($size, $weight) {
+  font-family: $main-font;
+  color: $black-color;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin sec-txt-light($size, $weight) {
+  font-family: $sec-font;
+  color: $white-color;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin sec-txt-dark($size, $weight) {
+  font-family: $sec-font;
+  color: $black-color;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+

@@ -1,0 +1,67 @@
+{
+  "menu": {
+    "totalIncome": "Total Income",
+    "lang": "Lang.:"
+  },
+  "general": {
+    "test-app": "Test App",
+    "username": "Username",
+    "password": "Password",
+    "users": "Users",
+    "products": "Products",
+    "search": "Search"
+  },
+  "form": {
+    "login-in": "Log In",
+    "authentication": "Authentication"
+  },
+  "table": {
+    "username": "UserName",
+    "firstname": "First Name",
+    "lastname": "Last Name",
+    "saleincome": "Sale Income",
+    "registerdate": "Register Date",
+    "productname": "Product Name",
+    "quantity": "Quantity",
+    "price": "Price",
+    "saledate": "Sale Date",
+    "info": "Showing {first} to {last} of {totalRecords} entries"
+  },
+  "modal": {
+    "clear-filter": "Clear Filter",
+    "sell-product": "Sell Product",
+    "count": "Amount",
+    "filter": "Filter",
+    "sale-product": "Are you sure you want to sell?",
+    "delete-product": "Are you sure you want to delete?",
+    "edit-product": "Edit Product",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "add-product":  "New Product",
+    "add-user":  "New User",
+    "edit-user":  "Edit User",
+    "registerDateTo": "Register Date To",
+    "registerFrom": "Register Date From",
+    "totalSaleFrom": "Total Sales From",
+    "totalSaleTo": "Total Sales To"
+  },
+  "product": {
+    "productname": "Product Name",
+    "quantity": "Quantity",
+    "price": "Price"
+  },
+  "user": {
+    "username": "Username",
+    "firstName": "First Name",
+    "password": "Password",
+    "lastName": "Last Name",
+    "saleIncome": "Sale Income"
+  },
+  "message": {
+    "success": "Success",
+    "failed-form": "Form is not valid!",
+    "failed-request": "Something did not proceed!",
+    "success-login": "You logged in!",
+    "success-request": "Request proceed!"
+  }
+}

@@ -1,0 +1,21 @@
+<p-dialog [(visible)]="visible" (onHide)="visibleChange.emit(false)">
+  <ng-template pTemplate="header">
+    {{'modal.sell-product' | translate}}
+  </ng-template>
+
+  <form class="flex flex-col gap-3 form">
+    <div class="form__field">
+      <label for="sell-count">{{'modal.count' | translate}}</label>
+      <p-inputNumber name="itemCounter" id="sell-count" [(ngModel)]="itemCount" mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="1" [max]="maxCount"></p-inputNumber>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <button pButton type="button" [label]="'modal.confirm' | translate" icon="pi pi-check" iconPos="left" class="p-button-success p-button-sm"
+            (click)="accept()"
+    ></button>
+    <button pButton type="button" [label]="'modal.cancel' | translate" icon="pi pi-times" iconPos="left" class="p-button-danger p-button-sm"
+            (click)="visible = false;"
+    ></button>
+  </ng-template>
+</p-dialog>

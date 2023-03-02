@@ -1,0 +1,29 @@
+<p-dialog [(visible)]="visible" (onHide)="visibleChange.emit(false)">
+  <ng-template pTemplate="header">
+    {{'modal.' + (editMode ? 'edit' : 'add') + '-product' | translate}}
+  </ng-template>
+
+  <form [formGroup]="productForm" class="flex flex-col gap-3 form">
+    <div class="form__field">
+      <label for="product-name">{{'product.productname' | translate}}</label>
+      <input type="text" id="product-name" formControlName="productName" pInputText [placeholder]="'product.productname' | translate">
+    </div>
+    <div class="form__field">
+      <label for="product-price">{{'product.price' | translate}}</label>
+      <p-inputNumber id="product-price" formControlName="price" [placeholder]="'product.price' | translate"></p-inputNumber>
+    </div>
+    <div class="form__field">
+      <label for="product-quantity">{{'product.quantity' | translate}}</label>
+      <p-inputNumber id="product-quantity" formControlName="quantity" [placeholder]="'product.quantity' | translate"></p-inputNumber>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <button pButton type="button" [disabled]="productForm.invalid"  [label]="'modal.confirm' | translate" icon="pi pi-check" iconPos="left" class="p-button-success p-button-sm"
+            (click)="accept()"
+    ></button>
+    <button pButton type="button" [label]="'modal.cancel' | translate" icon="pi pi-times" iconPos="left" class="p-button-danger p-button-sm"
+            (click)="visible = false; editMode = false; productData = null;"
+    ></button>
+  </ng-template>
+</p-dialog>

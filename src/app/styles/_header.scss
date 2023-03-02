@@ -1,0 +1,11 @@
+.header {
+  background-color: $main-light-color;
+  h1 {
+    @include prm-txt-dark($p-size-md, 300);
+  }
+  .user-info {
+    p {
+      @include prm-txt-dark($p-size-sm, 300);
+    }
+  }
+}

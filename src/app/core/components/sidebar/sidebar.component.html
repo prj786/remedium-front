@@ -1,0 +1,17 @@
+<p-sidebar [(visible)]="state" [showCloseIcon]="false" (onHide)="stateChange.emit(false)">
+  <ng-template pTemplate="header">
+    <h1>
+      {{'general.test-app' | translate}}
+    </h1>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <ng-container *ngFor="let item of menuItems">
+      <rm-menu-item [route]="item.route" [icon]=item.icon [label]="item.name" (click)="stateChange.emit(false)"></rm-menu-item>
+    </ng-container>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <p>
+      {{'general.test-app' | translate}}
+    </p>
+  </ng-template>
+</p-sidebar>

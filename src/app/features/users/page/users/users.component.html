@@ -1,0 +1,22 @@
+<ng-container *ngIf="(userTableData$ | async) as userData">
+  <rm-table
+    [pagination]="true"
+    [tableData]="userData.items"
+    [tableHeaders]="userTableHeader"
+    [totalRecords]="userData.size"
+    [caption]="'users'"
+    [actionsRow]="(isAuthenticated$ | async)"
+    [filterEnabled]="true"
+    (rowChange)="rowChange($event)"
+    (edit)="editUser($event)"
+    (delete)="deleteData($event)"
+    (add)="addUser()"
+    (filter)="showFilter = true"
+    (searched)="searchFor($event)"
+  ></rm-table>
+</ng-container>
+
+
+<rm-user-modal [(visible)]="showModal" (accepted)="createUser($event)"></rm-user-modal>
+<rm-user-modal [(visible)]="editMode" [userData]="selectedUser" [editMode]="true" (accepted)="updateUser($event)"></rm-user-modal>
+<rm-filter-modal [(visible)]="showFilter" (filteredData)="filtered($event)"></rm-filter-modal>

@@ -1,0 +1,29 @@
+<div *ngIf="{authorized: authorized$ | async, user: user$ | async} as obs" class="flex justify-between place-items-center px-2 header h-16">
+  <div class="flex gap-1.5 place-items-center cursor-pointer flex-1">
+    <button pButton pRipple type="button" icon="pi pi-align-justify" class="p-button-rounded p-button-danger p-button-sm" (click)="menuStateChange.emit(true)">
+    </button>
+    <h1 class="flex-1">Remedium Sales App</h1>
+  </div>
+  <div class="user-info flex flex-1 gap-5 place-items-center justify-end">
+    <ng-container *ngIf="obs.user">
+      <p>
+        {{obs.user.username}}
+        ({{obs.user.firstName}} {{obs.user.lastName}})
+      </p>
+      <p>{{'menu.totalIncome' | translate}}: {{obs.user.saleIncome}}</p>
+    </ng-container>
+    <button pButton pRipple class="p-button-rounded p-button-danger p-button-sm" (click)="changeLang()">
+      {{'menu.lang' | translate}}
+      {{lang}}
+    </button>
+
+    <ng-container *ngIf="obs.authorized; else signInForm">
+      <button pButton pRipple type="button" (click)="signOut()" [icon]="'pi pi-sign-out'" class="p-button-rounded p-button-danger p-button-sm">
+      </button>
+    </ng-container>
+    <ng-template #signInForm>
+      <button pButton pRipple type="button" [routerLink]="'auth'" [icon]="'pi pi-user'" class="p-button-rounded p-button-danger p-button-sm">
+      </button>
+    </ng-template>
+  </div>
+</div>

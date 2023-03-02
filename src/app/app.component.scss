@@ -1,0 +1,15 @@
+.loader {
+  position: absolute;
+  height: calc(100vh - 65px);
+  width: 100vw;
+  overflow: hidden;
+  z-index: 9999;
+  background-color: rgba(71, 90, 122, 0.2);
+  &__spinner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

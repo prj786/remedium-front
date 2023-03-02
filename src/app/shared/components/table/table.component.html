@@ -1,0 +1,66 @@
+<p-table
+         [paginator]="pagination"
+         [lazy]="true"
+         [loading]="loading"
+         [rowsPerPageOptions]="[10,25,50]"
+         [totalRecords]="totalRecords"
+         [rows]="paginationOptions.rows"
+         [value]="tableData"
+         [columns]="tableHeaders"
+         (rowsChange)="rowChange.emit($event)"
+         [scrollable]="true"
+         scrollHeight="70vh"
+         styleClass="p-datatable-gridlines"
+         [showCurrentPageReport]="true"
+         [currentPageReportTemplate]="'table.info' | translate: {first: '{first}', last: '{last}', totalRecords: '{totalRecords}'}"
+>
+  <ng-template pTemplate="caption" *ngIf="caption">
+    <div class="flex w-full justify-between items-center">
+      <div class="flex gap-3 items-center">
+        <p>
+          {{('general.' + caption) | translate}}
+        </p>
+        <button *ngIf="filterEnabled" pButton icon="pi pi-filter" class="p-button-rounded p-button-success mr-2" (click)="filter.emit()"></button>
+        <button *ngIf="filterEnabled" pButton icon="pi pi-filter-slash" class="p-button-rounded p-button-danger mr-2" (click)="filterClear.emit()"></button>
+      </div>
+      <div class="flex gap-2.5">
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <ng-container *ngIf="searchEnabled">
+            <div class="p-inputgroup">
+                <input #searchValue type="text" pInputText>
+                <button (click)="searched.emit(searchValue.value)" type="button" pButton pRipple [label]="'general.search' | translate"></button>
+            </div>
+          </ng-container>
+        </span>
+        <button *ngIf="actionsRow" pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-success mr-2" (click)="add.emit()"></button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let header of tableHeaders">{{('table.' + header.toLowerCase()) | translate}}</th>
+      <th *ngIf="actionsRow"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr>
+      <td *ngFor="let col of tableHeaders">
+        <ng-container *ngIf="col === 'registerDate' || col === 'saleDate'; else tableValue">
+          {{data[col] | date: 'dd/MM/YYYY, HH:mm'}}
+        </ng-container>
+        <ng-template #tableValue>
+          {{data[col]}}
+        </ng-template>
+      </td>
+      <td *ngIf="actionsRow">
+        <div class="flex gap-3 items-center justify-center" *ngIf="user$ | async as user">
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="edit.emit(data)"></button>
+          <button *ngIf="user._id !== data._id" pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="confirmDelete($event, data)"></button>
+          <button *ngIf="isProduct && data?.quantity" pButton pRipple icon="pi pi-shopping-cart" class="p-button-rounded p-button-warning" (click)="confirmSale($event, data)"></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-confirmPopup></p-confirmPopup>

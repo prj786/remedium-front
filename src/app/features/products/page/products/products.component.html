@@ -1,0 +1,21 @@
+<ng-container *ngIf="(productsTableData$ | async) as productData">
+  <rm-table
+    [pagination]="true"
+    [tableData]="productData.items"
+    [tableHeaders]="productTableHeader"
+    [totalRecords]="productData.size"
+    [caption]="'products'"
+    [isProduct]="true"
+    [actionsRow]="true"
+    (add)="showModal = true"
+    (searched)="search($event)"
+    (edit)="editProduct($event)"
+    (delete)="deleteProduct($event)"
+    (sale)="sellItemModal($event)"
+  ></rm-table>
+</ng-container>
+
+
+<rm-product-modal [(visible)]="showModal" [editMode]="editMode" (accepted)="addProduct($event)"></rm-product-modal>
+<rm-product-modal [(visible)]="editMode" [productData]="selectedProduct" [editMode]="editMode" (accepted)="modifyProduct($event)"></rm-product-modal>
+<rm-sell-modal [(visible)]="showSellModal" [sellItem]="sellProduct" (accepted)="sellItems($event)"></rm-sell-modal>

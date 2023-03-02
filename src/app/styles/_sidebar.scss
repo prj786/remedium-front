@@ -1,0 +1,13 @@
+.sidebar-item {
+  background-color: $main-light-color;
+  @include prm-txt-dark($p-size-md, 300);
+  transition: all 300ms ease-in-out;
+  i {
+    font-size: $i-size-md;
+  }
+}
+
+.active-route {
+  background-color: $main-dark-color;
+  @include prm-txt-light($p-size-md, 300);
+}

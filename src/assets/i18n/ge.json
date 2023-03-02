@@ -1,0 +1,66 @@
+{
+  "menu": {
+    "totalIncome": "მთლიანი შემოსავალი",
+    "lang": "ენა:"
+  },
+  "general": {
+    "test-app": "სატესტო აპლიკაცია",
+    "username": "მომხმარებელი",
+    "password": "კოდური სიტყვა",
+    "users": "მომხმარებლები",
+    "products": "პროდუქტები",
+    "search": "ძებნა"
+  },
+  "form": {
+    "login-in": "შესვლა",
+    "authentication": "ავტორიზაცია"
+  },
+  "table": {
+    "username": "მომხმარებელი",
+    "firstname": "სახელი",
+    "lastname": "გვარი",
+    "saleincome": "შემოსავალი გაყიდვებიდან",
+    "registerdate": "რეგისტრაციის თარიღი",
+    "productname": "პროდუქტის სახელი",
+    "quantity": "რაოდენობა",
+    "price": "ფასი",
+    "saledate": "გაყიდვის თარიღი",
+    "info": "ნაჩვენებია {first} - {last} სულ {totalRecords} ჩანაწერი"
+  },
+  "modal": {
+    "sell-product": "პროდუქტის გაყიდვა",
+    "count": "რაოდენობა",
+    "filter": "ფილტრაცია",
+    "sale-product": "ნამდვილად გსურთ გაყიდვა?",
+    "delete-product": "ნამდვილად გსურთ წაშლა?",
+    "cancel": "გაუქმება",
+    "confirm": "დადასტურება",
+    "add-product":  "ახალი პროდუქტი",
+    "edit-product": "პროდუქტის რედაქტირება",
+    "add-user":  "ახალი მომხმარებელი",
+    "edit-user":  "მომხმარებლის რედაქტირება",
+    "registerDateTo": "რეგისტრაციის თარიღიდან",
+    "registerFrom": "რეგისტრაციის თარიღამდე",
+    "totalSaleFrom": "მთლიანი შემოსავლიდან",
+    "totalSaleTo": "მთლიან შემოსავლამდე"
+  },
+  "product": {
+    "productname": "პროდუქტის დასახელება",
+    "quantity": "რაოდენობა",
+    "price": "ფასი"
+  },
+  "user": {
+    "username": "მომხმარებელი",
+    "firstName": "სახელი",
+    "password": "კოდური სიტყვა",
+    "lastName": "გვარი",
+    "saleIncome": "გაყიდვებიდან შემოსავალი"
+  },
+  "message": {
+    "success": "წარმატება!",
+    "failed-form": "ფორმა არაა ვალიდური!",
+    "failed-request": "დაფიქსირდა შეცდომა!",
+    "success-login": "წარმატებით დალოგინდით!",
+    "success-request": "წამატებით გაიგზავნა მოთხოვნა!"
+  }
+}
